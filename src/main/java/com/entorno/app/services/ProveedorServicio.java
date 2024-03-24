@@ -31,7 +31,6 @@ public class ProveedorServicio implements IProveedorServicio{
 
         @Override
         public List<Proveedor> getProveedores() {
-            // TODO Auto-generated method stub
-            throw new UnsupportedOperationException("Unimplemented method 'getProveedores'");
+            return proveedorRepo.findAll();
         }
 }

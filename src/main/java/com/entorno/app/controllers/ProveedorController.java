@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.entorno.app.models.Proveedor;
 import com.entorno.app.services.ProveedorServicio;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 @RestController
@@ -37,6 +38,14 @@ public class ProveedorController {
     public Proveedor buscarPorId(@PathVariable Integer id) {
         return proveedorServicio.getProveedor(id);
     }
+
+    @PostMapping("/")
+    public ResponseEntity<Proveedor> agregar(@RequestBody Proveedor proveedor) {
+        Proveedor obj = proveedorServicio.grabarProveedor(proveedor);
+        return new ResponseEntity<>(obj, HttpStatus.OK);
+        
+    }
+    
     
     @PutMapping("/")
     public ResponseEntity<Proveedor> editar(@RequestBody Proveedor proveedor){
